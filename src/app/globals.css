@@ -1,0 +1,301 @@
+@import "tailwindcss";
+
+/* Hand-drawn canvas font */
+@font-face {
+  font-family: 'Virgil';
+  src: url('/fonts/Virgil.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CRITICAL: Force text visibility everywhere - Simple approach */
+input {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input::placeholder {
+  color: #9ca3af !important;
+}
+
+textarea {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Dark theme chat bar textarea override */
+textarea.chat-input-dark {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  caret-color: rgb(139, 92, 246) !important;
+}
+
+textarea.chat-input-dark::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 165 96% 38%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 165 96% 38%;
+    --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-gray-900;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ===========================================
+   MODERN CROSS-BROWSER COMPATIBILITY FIXES
+   =========================================== */
+
+/* CSS Reset & Normalization for ALL Browsers */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container behavior normalization */
+.browser-compat .container {
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Max-width containers */
+.browser-compat .max-w-5xl {
+  max-width: 64rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.browser-compat .max-w-4xl {
+  max-width: 56rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.browser-compat .max-w-2xl {
+  max-width: 42rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Flexbox normalization for legacy opt-in containers only */
+.browser-compat .flex {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.browser-compat .flex-col {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
+.browser-compat .items-center {
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.browser-compat .justify-center {
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+.browser-compat .justify-between {
+  -webkit-box-pack: justify !important;
+  -webkit-justify-content: space-between !important;
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important;
+}
+
+/* Grid normalization */
+.browser-compat .grid {
+  display: -ms-grid !important;
+  display: grid !important;
+}
+
+.browser-compat .grid-cols-3 {
+  -ms-grid-columns: 1fr 1fr 1fr !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+/* Responsive grid fixes */
+@media (min-width: 768px) {
+  .browser-compat .md\:grid-cols-2 {
+    -ms-grid-columns: 1fr 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  
+  .browser-compat .md\:grid-cols-3 {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .browser-compat .lg\:grid-cols-2 {
+    -ms-grid-columns: 1fr 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Text alignment fixes */
+.browser-compat .text-center {
+  text-align: center !important;
+}
+
+.browser-compat .mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Height fixes for all browsers */
+.browser-compat .min-h-screen {
+  min-height: 100vh !important;
+  min-height: -webkit-fill-available !important;
+}
+
+.browser-compat .h-screen {
+  height: 100vh !important;
+  height: -webkit-fill-available !important;
+}
+
+/* ===========================================
+   HIDE AMATIC CUSTOM UI ELEMENTS
+   =========================================== */
+
+/* Hide default canvas library toolbar completely */
+.amatic .Island {
+  display: none !important;
+}
+
+.amatic .App-toolbar {
+  display: none !important;
+}
+
+.amatic .App-toolbar-container {
+  display: none !important;
+}
+
+.amatic .App-menu {
+  display: none !important;
+}
+
+.amatic .layer-ui__wrapper {
+  display: none !important;
+}
+
+.amatic .App-bottom-bar {
+  display: none !important;
+}
+
+.amatic .ToolIcon {
+  display: none !important;
+}
+
+.amatic .HelpDialog {
+  display: none !important;
+}
+
+.amatic .Stack {
+  display: none !important;
+}
+
+.amatic-container .layer-ui__wrapper__top-right,
+.amatic-container .layer-ui__wrapper__footer {
+  display: none !important;
+}
+
+/* Hide welcome screen */
+.amatic .welcome-screen-decor {
+  display: none !important;
+}
+
+.amatic .welcome-screen-center {
+  display: none !important;
+}
+
+/* Hide side panels */
+.amatic .sidebar-wrapper {
+  display: none !important;
+}
+
+/* Hide all floating menus */
+.amatic .popover {
+  display: none !important;
+}

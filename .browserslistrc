@@ -1,0 +1,10 @@
+# Browser compatibility targets for Autoprefixer
+# Simplified for TailwindCSS 4.0 compatibility
+
+> 1%
+last 2 versions
+not dead
+Chrome >= 60
+Firefox >= 60
+Safari >= 12
+Edge >= 79
